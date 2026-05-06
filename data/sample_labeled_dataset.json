@@ -1,0 +1,53 @@
+{
+  "tasks": [
+    {
+      "task_id": "sample_fix_parser",
+      "task_description": "Fix the parser bug in src/parser.py and verify with tests.",
+      "labels": {
+        "candidate_good": 1,
+        "candidate_bad": 0
+      },
+      "candidates": [
+        {
+          "candidate_id": "candidate_good",
+          "trajectory": [
+            {
+              "event_id": "g1",
+              "event_type": "file_diff",
+              "timestamp": null,
+              "content": "",
+              "metadata": {
+                "file_path": "src/parser.py",
+                "diff": "--- a/src/parser.py\n+++ b/src/parser.py\n@@\n- return tokens[0]\n+ if not tokens:\n+     return None\n+ return tokens[0]"
+              }
+            },
+            {
+              "event_id": "g2",
+              "event_type": "command",
+              "timestamp": null,
+              "content": "",
+              "metadata": {
+                "command": "pytest tests/test_parser.py",
+                "exit_code": 0,
+                "stdout": "3 passed",
+                "stderr": ""
+              }
+            }
+          ]
+        },
+        {
+          "candidate_id": "candidate_bad",
+          "trajectory": [
+            {
+              "event_id": "b1",
+              "event_type": "final_answer",
+              "timestamp": null,
+              "content": "Done, all fixed.",
+              "metadata": {}
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

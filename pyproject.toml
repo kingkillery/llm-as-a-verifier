@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "llm-as-a-verifier"
+version = "0.1.0"
+description = "Evidence-aware verifier for tool-using coding-agent trajectories"
+requires-python = ">=3.9"
+
+[project.scripts]
+verify-trajectories = "scripts.trajectory_verifier:verify_cli"
+evaluate-verifier = "scripts.trajectory_verifier:evaluate_cli"
+verifier-collect = "scripts.trajectory_verifier:collect_cli"
+
+[tool.setuptools.packages.find]
+include = ["scripts"]

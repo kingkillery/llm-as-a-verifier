@@ -1,0 +1,3 @@
+# Smoke-test scoring profile for pi-speak-extension.
+profile = 'node'
+

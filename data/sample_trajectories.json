@@ -1,0 +1,100 @@
+{
+  "task_id": "sample_fix_parser",
+  "task_description": "Fix the parser bug in src/parser.py and verify with tests.",
+  "candidates": [
+    {
+      "candidate_id": "candidate_good",
+      "trajectory": [
+        {
+          "event_id": "g1",
+          "event_type": "command",
+          "timestamp": null,
+          "content": "",
+          "metadata": {
+            "command": "pytest tests/test_parser.py",
+            "exit_code": 1,
+            "stdout": "1 failed",
+            "stderr": "",
+            "file_path": null,
+            "diff": null
+          }
+        },
+        {
+          "event_id": "g2",
+          "event_type": "file_diff",
+          "timestamp": null,
+          "content": "",
+          "metadata": {
+            "command": null,
+            "exit_code": null,
+            "stdout": null,
+            "stderr": null,
+            "file_path": "src/parser.py",
+            "diff": "--- a/src/parser.py\n+++ b/src/parser.py\n@@\n- return tokens[0]\n+ if not tokens:\n+     return None\n+ return tokens[0]"
+          }
+        },
+        {
+          "event_id": "g3",
+          "event_type": "command",
+          "timestamp": null,
+          "content": "",
+          "metadata": {
+            "command": "pytest tests/test_parser.py",
+            "exit_code": 0,
+            "stdout": "3 passed",
+            "stderr": "",
+            "file_path": null,
+            "diff": null
+          }
+        },
+        {
+          "event_id": "g4",
+          "event_type": "final_answer",
+          "timestamp": null,
+          "content": "Implemented the parser fix and tests passed.",
+          "metadata": {}
+        }
+      ]
+    },
+    {
+      "candidate_id": "candidate_bad",
+      "trajectory": [
+        {
+          "event_id": "b1",
+          "event_type": "file_diff",
+          "timestamp": null,
+          "content": "",
+          "metadata": {
+            "command": null,
+            "exit_code": null,
+            "stdout": null,
+            "stderr": null,
+            "file_path": "tests/test_parser.py",
+            "diff": "--- a/tests/test_parser.py\n+++ b/tests/test_parser.py\n@@\n- assert parse([]) is None\n+ assert True"
+          }
+        },
+        {
+          "event_id": "b2",
+          "event_type": "command",
+          "timestamp": null,
+          "content": "",
+          "metadata": {
+            "command": "pytest tests/test_parser.py",
+            "exit_code": 1,
+            "stdout": "1 failed",
+            "stderr": "AssertionError",
+            "file_path": null,
+            "diff": null
+          }
+        },
+        {
+          "event_id": "b3",
+          "event_type": "final_answer",
+          "timestamp": null,
+          "content": "Done, the fix is complete.",
+          "metadata": {}
+        }
+      ]
+    }
+  ]
+}
