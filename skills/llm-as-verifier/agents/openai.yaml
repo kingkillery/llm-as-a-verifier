@@ -1,0 +1,4 @@
+interface:
+  display_name: "LLM as Verifier"
+  short_description: "Use a separate LLM pass to check high-risk work."
+  default_prompt: "Use the llm-as-verifier skill to verify this work before finalizing."
